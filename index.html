@@ -40,7 +40,7 @@
 				name: 'Write new content',
 				id: "Task 1",
 				progress: 5,
-				dependencies: 'Task 0'
+				dependencies: 'Task 0' //optional task dependency
 			},
 			{
 				start: '2018-10-04',
@@ -76,8 +76,8 @@
 				custom_class: 'bar-milestone'
 			},
 			{
-				start: '2014-01-05',
-				end: '2019-10-12',
+				start: '2018-09-05',
+				end: '2018-11-12',
 				name: 'Long term task',
 				id: "Task 6",
 				progress: 0
@@ -96,11 +96,11 @@
 			on_view_change: function(mode) {
 				console.log(mode);
 			},
-			view_mode: 'Month',
-			language: 'en',
-            draggable: false,
-            hasArrows: false,
-            popup_trigger: 'mouseover',
+			view_mode: 'Day',  // show Day view
+			language: 'en',  // set language to English
+            draggable: false, //disable editing task dates via dragging
+            hasArrows: false, //show/hide dependency arrows
+            popup_trigger: 'mouseover', // show popup on hover rather than on click
             position: 'right',
 		});
 		console.log(gantt_chart);
