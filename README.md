@@ -55,9 +55,11 @@ var gantt = new Gantt("#gantt", tasks, {
     bar_corner_radius: 3,
     arrow_curve: 5,
     padding: 18,
-    view_mode: 'Day',   
+    view_mode: 'Day',
     date_format: 'YYYY-MM-DD',
-    custom_popup_html: null
+    custom_popup_html: null,
+    draggable: true,
+    hasArrows: true,
 });
 ```
 

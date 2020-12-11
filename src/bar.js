@@ -122,38 +122,39 @@ export default class Bar {
 
     draw_resize_handles() {
         if (this.invalid) return;
-
         const bar = this.$bar;
         const handle_width = 8;
 
-        createSVG('rect', {
-            x: bar.getX() + bar.getWidth() - 9,
-            y: bar.getY() + 1,
-            width: handle_width,
-            height: this.height - 2,
-            rx: this.corner_radius,
-            ry: this.corner_radius,
-            class: 'handle right',
-            append_to: this.handle_group
-        });
-
-        createSVG('rect', {
-            x: bar.getX() + 1,
-            y: bar.getY() + 1,
-            width: handle_width,
-            height: this.height - 2,
-            rx: this.corner_radius,
-            ry: this.corner_radius,
-            class: 'handle left',
-            append_to: this.handle_group
-        });
-
-        if (this.task.progress && this.task.progress < 100) {
-            this.$handle_progress = createSVG('polygon', {
-                points: this.get_progress_polygon_points().join(','),
-                class: 'handle progress',
+        if (this.gantt.options.draggable) {
+            createSVG('rect', {
+                x: bar.getX() + bar.getWidth() - 9,
+                y: bar.getY() + 1,
+                width: handle_width,
+                height: this.height - 2,
+                rx: this.corner_radius,
+                ry: this.corner_radius,
+                class: 'handle right',
                 append_to: this.handle_group
             });
+
+            createSVG('rect', {
+                x: bar.getX() + 1,
+                y: bar.getY() + 1,
+                width: handle_width,
+                height: this.height - 2,
+                rx: this.corner_radius,
+                ry: this.corner_radius,
+                class: 'handle left',
+                append_to: this.handle_group
+            });
+
+            if (this.task.progress && this.task.progress < 100) {
+                this.$handle_progress = createSVG('polygon', {
+                    points: this.get_progress_polygon_points().join(','),
+                    class: 'handle progress',
+                    append_to: this.handle_group
+                });
+            }
         }
     }
 
