@@ -3,7 +3,8 @@
     <h2>Frappe Gantt Custom Mod</h2>
     <p align="center">
         <p>This is a customization of the original <a href="https://github.com/frappe/gantt">Frappe Gant</a> project
-            <br />with improvements from <a href="https://github.com/Alisher778/frappe-gantt-extended/tree/dragging">Alisher778</a>.
+            <br />with improvements from <a href="https://github.com/Alisher778/frappe-gantt-extended/tree/dragging">Alisher778</a>
+            and <a href="https://github.com/jamieday/gantt/tree/task_groups">jaimeday</a>.
     </p>
 </div>
 
@@ -30,6 +31,7 @@ And start hacking:
 var tasks = [
   {
     id: 'Task 1',
+    group_id: 'design',
     name: 'Redesign website',
     start: '2016-12-28',
     end: '2016-12-31',
@@ -58,6 +60,13 @@ var gantt = new Gantt("#gantt", tasks, {
     custom_popup_html: null,
     draggable: true,
     hasArrows: true,
+    groups: [ 
+        {
+            'id': 'design', 
+            'name': 'Web Design',
+            'bar_class': 'bar-design-group'
+        }
+    ]
 });
 ```
 
