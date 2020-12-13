@@ -1106,10 +1106,12 @@ class Gantt {
 
     setup_options(options) {
         // convert groups array to a dictionary for faster lookups
-        options.groups = options.groups.reduce((dict, curr) => {
-            dict[curr.id] = curr;
-            return dict;
-        }, {});
+        if (typeof options.groups !== "undefined") {
+            options.groups = options.groups.reduce((dict, curr) => {
+                dict[curr.id] = curr;
+                return dict;
+            }, {});
+        }
 
         const default_options = {
             header_height: 50,
