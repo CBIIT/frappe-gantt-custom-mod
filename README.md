@@ -3,8 +3,10 @@
     <h2>Frappe Gantt Custom Mod</h2>
     <p align="center">
         <p>This is a customization of the original <a href="https://github.com/frappe/gantt">Frappe Gant</a> project
-            <br />with improvements from <a href="https://github.com/Alisher778/frappe-gantt-extended/tree/dragging">Alisher778</a>
-            and <a href="https://github.com/jamieday/gantt/tree/task_groups">jaimeday</a>.
+        <br />with improvements from 
+        <a href="https://github.com/Alisher778/frappe-gantt-extended/tree/dragging">Alisher778</a>,
+        <a href="https://github.com/jamieday/gantt/tree/task_groups">jaimeday</a>, and
+        <a href="https://github.com/fredybawa/gantt/commit/8b94aa97fdec373ac09d0ae6912e948f8fe9d0a1">fredybawa</a>.
     </p>
 </div>
 
