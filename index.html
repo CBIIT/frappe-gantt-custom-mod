@@ -141,12 +141,14 @@
 			on_view_change: function(mode) {
 				console.log(mode);
 			},
-			view_mode: 'Day',  // show Day view
+			view_mode: 'Week',  // show Day view
 			language: 'en',  // set language to English
             draggable: false, //disable editing task dates via dragging
             hasArrows: false, //show/hide dependency arrows
             popup_trigger: 'mouseover', // show popup on hover rather than on click
             position: 'right',
+            padding_start: 1, // optional, pads the start of the timeline with extra days/weeks/months/years depending on view_mode
+            padding_end: 1, //optional, pads the start of the timeline with extra days/weeks/months/years depending on view_mode
 		});
 		console.log(gantt_chart);
 	</script>

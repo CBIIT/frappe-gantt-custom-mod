@@ -1274,20 +1274,38 @@ class Gantt {
 
         this.gantt_start = date_utils.start_of(this.gantt_start, 'day');
         this.gantt_end = date_utils.start_of(this.gantt_end, 'day');
-
+        
+        const padding_start = typeof this.options.padding_start === 'undefined' ? this.default_padding() : this.options.padding_start;
+        const padding_end = typeof this.options.padding_end === 'undefined' ? this.default_padding() : this.options.padding_end;
+        
         // add date padding on both sides
-        if (this.view_is([VIEW_MODE.QUARTER_DAY, VIEW_MODE.HALF_DAY])) {
-            this.gantt_start = date_utils.add(this.gantt_start, -7, 'day');
-            this.gantt_end = date_utils.add(this.gantt_end, 7, 'day');
+        /*  Specifed as an integer representing 1 day for the Quarter Day, Half Day and Day view modes;
+            1 week for the Week view mode; 1 month for the Month view mode;
+            1 year for all other view modes. */
+        if (this.view_is([VIEW_MODE.QUARTER_DAY, VIEW_MODE.HALF_DAY, VIEW_MODE.DAY])) {
+            this.gantt_start = date_utils.add(this.gantt_start, -padding_start, 'day');
+            this.gantt_end = date_utils.add(this.gantt_end, padding_end, 'day');
+        } else if (this.view_is(VIEW_MODE.WEEK)) {
+            this.gantt_start = date_utils.add(this.gantt_start, -(padding_start * 7), 'day');
+            this.gantt_end = date_utils.add(this.gantt_end, (padding_end * 7), 'day');
         } else if (this.view_is(VIEW_MODE.MONTH)) {
-            this.gantt_start = date_utils.start_of(this.gantt_start, 'year');
-            this.gantt_end = date_utils.add(this.gantt_end, 1, 'year');
-        } else if (this.view_is(VIEW_MODE.YEAR)) {
-            this.gantt_start = date_utils.add(this.gantt_start, -2, 'year');
-            this.gantt_end = date_utils.add(this.gantt_end, 2, 'year');
+            this.gantt_start = date_utils.add(this.gantt_start, -padding_start, 'month');
+            this.gantt_end = date_utils.add(this.gantt_end, padding_end, 'month');
         } else {
-            this.gantt_start = date_utils.add(this.gantt_start, -1, 'month');
-            this.gantt_end = date_utils.add(this.gantt_end, 1, 'month');
+            this.gantt_start = date_utils.add(this.gantt_start, -padding_start, 'year');
+            this.gantt_end = date_utils.add(this.gantt_end, padding_end, 'year');
+        }
+    }
+
+    default_padding() {
+        if (this.view_is([VIEW_MODE.QUARTER_DAY, VIEW_MODE.HALF_DAY, VIEW_MODE.DAY])) {
+            return 7;
+        } else if (this.view_is(VIEW_MODE.WEEK)) {
+            return 4;
+        } else if (this.view_is(VIEW_MODE.MONTH)) {
+            return 6;
+        } else if (this.view_is(VIEW_MODE.YEAR)) {
+            return 2;
         }
     }
 
