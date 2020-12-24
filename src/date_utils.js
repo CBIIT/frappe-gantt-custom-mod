@@ -195,7 +195,7 @@ export default {
     },
 
     diff(date_a, date_b, scale = DAY) {
-        let milliseconds, seconds, hours, minutes, days, months, years;
+        let milliseconds, seconds, hours, minutes, days, months, years, quarters;
 
         milliseconds = date_a - date_b;
         seconds = milliseconds / 1000;

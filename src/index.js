@@ -12,6 +12,7 @@ const VIEW_MODE = {
     DAY: 'Day',
     WEEK: 'Week',
     MONTH: 'Month',
+    QUARTER: 'Quarter',
     YEAR: 'Year'
 };
 
@@ -215,6 +216,9 @@ export default class Gantt {
             this.options.column_width = 140;
         } else if (view_mode === VIEW_MODE.MONTH) {
             this.options.step = 24 * 30;
+            this.options.column_width = 120;
+        } else if (view_mode === VIEW_MODE.QUARTER) {
+            this.options.step = 24 * 90;
             this.options.column_width = 120;
         } else if (view_mode === VIEW_MODE.YEAR) {
             this.options.step = 24 * 365;
@@ -534,6 +538,7 @@ export default class Gantt {
                     : date_utils.format(date, 'D', this.options.language),
             Month_lower: date_utils.format(date, 'MMMM', this.options.language),
             Year_lower: date_utils.format(date, 'YYYY', this.options.language),
+            Quarter_lower: date_utils.format(date, 'MMMM', this.options.language),
             'Quarter Day_upper':
                 date.getDate() !== last_date.getDate()
                     ? date_utils.format(date, 'D MMM', this.options.language)
@@ -559,6 +564,10 @@ export default class Gantt {
             Year_upper:
                 date.getFullYear() !== last_date.getFullYear()
                     ? date_utils.format(date, 'YYYY', this.options.language)
+                    : '',
+            Quarter_upper:
+                date.getFullYear() !== last_date.getFullYear()
+                    ? date_utils.format(date, 'YYYY', this.options.language)
                     : ''
         };
 
@@ -580,7 +589,9 @@ export default class Gantt {
             Month_lower: this.options.column_width / 2,
             Month_upper: this.options.column_width * 12 / 2,
             Year_lower: this.options.column_width / 2,
-            Year_upper: this.options.column_width * 30 / 2
+            Year_upper: this.options.column_width * 30 / 2,
+            Quarter_lower: this.options.column_width / 2,
+            Quarter_upper: this.options.column_width * 30 / 2
         };
 
         return {
