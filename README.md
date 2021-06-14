@@ -1,34 +1,31 @@
 <div align="center">
-    <img src="https://github.com/frappe/design/blob/master/logos/logo-2019/frappe-gantt-logo.png" height="128">
     <h2>Frappe Gantt Custom Mod</h2>
     <p align="center">
-        <p>This is a customization of the original <a href="https://github.com/frappe/gantt">Frappe Gant</a> project
+        <p>This Gantt chart app is used as the backbone of the <a href="https://github.com/cancerDHC/dashboard">
+        CCDH GitHub ticket visualization dashboard</a>.</p>
+        <p>It is a customization of the original <a href="https://github.com/frappe/gantt">Frappe Gant</a> project
         <br />with improvements from 
         <a href="https://github.com/Alisher778/frappe-gantt-extended/tree/dragging">Alisher778</a>,
-        <a href="https://github.com/jamieday/gantt/tree/task_groups">jaimeday</a>, and
-        <a href="https://github.com/fredybawa/gantt/commit/8b94aa97fdec373ac09d0ae6912e948f8fe9d0a1">fredybawa</a>.
+        <a href="https://github.com/jamieday/gantt/tree/task_groups">jaimeday</a>, 
+        <a href="https://github.com/fredybawa/gantt/commit/8b94aa97fdec373ac09d0ae6912e948f8fe9d0a1">fredybawa</a>,
+         and Jen Martin.
     </p>
 </div>
 
 <p align="center">
-    <a href="https://frappe.github.io/gantt">
-        <img src="https://cloud.githubusercontent.com/assets/9355208/21537921/4a38b194-cdbd-11e6-8110-e0da19678a6d.png">
-    </a>
+    <img src="https://cloud.githubusercontent.com/assets/9355208/21537921/4a38b194-cdbd-11e6-8110-e0da19678a6d.png">
 </p>
 
-### Install
-```
-npm install frappe-gantt
-```
+
 
 ### Usage
-Include it in your HTML:
+Include the compiled JS and CSS files in the main HTML page:
 ```
 <script src="frappe-gantt.min.js"></script>
 <link rel="stylesheet" href="frappe-gantt.css">
 ```
 
-And start hacking:
+The Gantt chart is a collection of tasks with the following format. To create a chart, get/create the tasks and then call the Gantt constructor:
 ```js
 var tasks = [
   {
@@ -72,14 +69,20 @@ var gantt = new Gantt("#gantt", tasks, {
 });
 ```
 
-If you want to contribute:
+### To Continue Development
 
 1. Clone this repo.
 2. `cd` into project directory
 3. `yarn`
 4. `yarn run dev`
 
+Install using the command:
+```
+npm install frappe-gantt
+```
+
+### Original Frappe Gantt Project Information
+
 License: MIT
 
-------------------
 Project maintained by [frappe](https://github.com/frappe)
